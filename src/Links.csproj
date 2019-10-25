@@ -4,11 +4,28 @@
     <TargetFramework>netstandard1.3</TargetFramework>
     <AssemblyName>LostTech.IO.Links</AssemblyName>
     <RootNamespace>LostTech.IO.Links</RootNamespace>
+    <Version>0.0.1</Version>
+    <Authors>Lost Tech LLC</Authors>
+    <Company>Lost Tech LLC</Company>
+    <Description>Symbolic link management</Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/losttech/IO.Links</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/losttech/IO.Links.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>symlink symbolic-link filesystem io</PackageTags>
+    <Copyright>Copyright ©2019 Lost Tech LLC</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="System.Runtime.InteropServices" Version="4.3.0" />
     <PackageReference Include="System.IO.FileSystem" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
