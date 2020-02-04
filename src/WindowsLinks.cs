@@ -12,6 +12,8 @@
 
         static LinkFlagsContainer? ExtraFlags;
         static void CreateSymlinkInternal(string symlink, string target, LinkFlags fileOrDirectory) {
+            if (symlink == target) throw new ArgumentException("Source and Target are the same");
+
             var extraFlags = Volatile.Read(ref ExtraFlags);
             if (extraFlags == null) {
                 var flags = fileOrDirectory | LinkFlags.AllowUnprivileged;

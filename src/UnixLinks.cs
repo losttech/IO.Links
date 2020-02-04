@@ -28,6 +28,7 @@
         }
 
         static void CreateSymlinkInternal(string symlink, string target) {
+            if (symlink == target) throw new ArgumentException("Source and Target are the same");
             while (true) {
                 if (UnixLinks.symlink(symlink: symlink, target: target) == 0)
                     return;
