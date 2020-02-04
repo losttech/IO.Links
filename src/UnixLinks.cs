@@ -27,19 +27,23 @@
         }
 
         static void CreateSymlinkInternal(string symlink, string target) {
-            int errno;
-            do {
+            while (true) {
                 if (UnixLinks.symlink(symlink: symlink, target: target))
                     return;
 
-                errno = Marshal.GetLastWin32Error();
+                int errno = Marshal.GetLastWin32Error();
                 if (errno == EINTR) continue;
-                int hResult = Marshal.GetHRForLastWin32Error();
+                int hResult = HResultFromErrno(errno);
                 Marshal.ThrowExceptionForHR(hResult);
-            } while (errno == EINTR);
+            }
         }
 
         [DllImport("libc", SetLastError = true)]
         static extern bool symlink(string target, string symlink);
+
+        static int HResultFromErrno(int errno)
+            => (errno & 0x80000000) == 0x80000000
+                ? errno
+                : (errno & 0x0000FFFF) | unchecked((int)0x80070000);
     }
 }
