@@ -6,7 +6,7 @@
     <RootNamespace>LostTech.IO.Links</RootNamespace>
     <LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>
-    <Version>0.0.2</Version>
+    <Version>0.0.3</Version>
     <Authors>Lost Tech LLC</Authors>
     <Company>Lost Tech LLC</Company>
     <Description>Symbolic link management</Description>

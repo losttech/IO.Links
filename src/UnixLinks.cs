@@ -28,7 +28,7 @@
 
         static void CreateSymlinkInternal(string symlink, string target) {
             while (true) {
-                if (UnixLinks.symlink(symlink: symlink, target: target))
+                if (UnixLinks.symlink(symlink: symlink, target: target) == 0)
                     return;
 
                 int errno = Marshal.GetLastWin32Error();
@@ -39,7 +39,7 @@
         }
 
         [DllImport("libc", SetLastError = true)]
-        static extern bool symlink(string target, string symlink);
+        static extern int symlink(string target, string symlink);
 
         static int HResultFromErrno(int errno)
             => (errno & 0x80000000) == 0x80000000
