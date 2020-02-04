@@ -5,6 +5,7 @@
 
     class UnixLinks: IFileSystemLinks {
         const int EINTR = 4;
+        const int EEXIST = 17;
 
         public void CreateFileSymlink(string symlink, string pointingTo) {
             if (symlink == null) throw new ArgumentNullException(nameof(symlink));
@@ -32,7 +33,10 @@
                     return;
 
                 int errno = Marshal.GetLastWin32Error();
-                if (errno == EINTR) continue;
+                switch (errno) {
+                case EINTR: continue;
+                case EEXIST: throw new IOException("File already exists");
+                }
                 int hResult = HResultFromErrno(errno);
                 Marshal.ThrowExceptionForHR(hResult);
             }
