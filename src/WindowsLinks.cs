@@ -10,7 +10,7 @@
         public void CreateDirectorySymlink(string symlink, string pointingTo)
             => CreateSymlinkInternal(symlink, pointingTo, LinkFlags.Directory);
 
-        static LinkFlagsContainer ExtraFlags;
+        static LinkFlagsContainer? ExtraFlags;
         static void CreateSymlinkInternal(string symlink, string target, LinkFlags fileOrDirectory) {
             var extraFlags = Volatile.Read(ref ExtraFlags);
             if (extraFlags == null) {

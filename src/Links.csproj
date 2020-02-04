@@ -4,6 +4,8 @@
     <TargetFramework>netstandard1.3</TargetFramework>
     <AssemblyName>LostTech.IO.Links</AssemblyName>
     <RootNamespace>LostTech.IO.Links</RootNamespace>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
     <Version>0.0.1</Version>
     <Authors>Lost Tech LLC</Authors>
     <Company>Lost Tech LLC</Company>
